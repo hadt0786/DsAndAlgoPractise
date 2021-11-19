@@ -28,7 +28,7 @@ import java.util.List;
 //		-10 <= nums[i] <= 10
 //		All the numbers of nums are unique.
 
-public class FindAllSubset {
+public class FindAllSubset_v1 {
 
     public static void main(String[] args) {
 
