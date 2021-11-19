@@ -32,12 +32,33 @@ Given two integers n and k, return all possible combinations of k numbers out of
         1 <= k <= n*/
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Combination_v2 {
+
 
     public static void main(String[] args) {
 
 
+    }
 
+    // II). Recursion -- C(n,k)=C(n-1,k-1)+C(n-1,k)
+    public static List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (k > n || k < 0) {
+            return result;
+        }
+        if (k == 0) {
+            result.add(new ArrayList<Integer>());
+            return result;
+        }
+        result = combine(n - 1, k - 1);
+        for (List<Integer> list : result) {
+            list.add(n);
+        }
+        result.addAll(combine(n - 1, k));
+        return result;
     }
 
 }

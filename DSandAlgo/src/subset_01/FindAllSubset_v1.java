@@ -1,7 +1,6 @@
 package subset_01;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 //https://leetcode.com/problems/subsets/
@@ -34,8 +33,15 @@ public class FindAllSubset_v1 {
     public static void main(String[] args) {
 
         int[] nums = {1, 2, 3};
+        // Approach - 1
+        // O(n*2^n)
         List<List<Integer>> output = subsetResult(nums);
         System.out.println(output.toString());
+
+        //Approach - 2
+        // O(2^n)
+        List<List<Integer>> output2 = subsets(nums);
+        System.out.println(output2.toString());
     }
 
     public static List<List<Integer>> subsetResult(int[] nums) {
@@ -54,6 +60,34 @@ public class FindAllSubset_v1 {
             subsetHelper(i + 1, subset, current_position, nums);
             current_position.remove(current_position.size() - 1);
         }
+
+    }
+
+    static List<List<Integer>> lists;
+    public static List<List<Integer>> subsets(int[] nums) {
+        lists = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        solve(list,nums,0);
+
+        return lists;
+    }
+
+     static void solve(List<Integer> list, int[] nums, int curr)
+    {
+
+        if(curr == nums.length)
+        {
+
+            lists.add(new ArrayList(list));
+            //System.out.println(true + " --> "+ lists.toString());
+            return;
+        }
+
+        List<Integer> list2 = new ArrayList(list);
+        list.add(nums[curr]);
+        //System.out.println("nums--" +nums[curr] + " list 1--> " + list.toString() + " //list 2--> " + list2.toString() +" main --> " + lists.toString());
+        solve(list2,nums,curr+1);
+        solve(list,nums,curr+1);
 
     }
 
