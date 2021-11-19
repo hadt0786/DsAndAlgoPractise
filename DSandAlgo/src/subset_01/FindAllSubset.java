@@ -1,8 +1,8 @@
 package subset_01;
-import java.lang.Integer;
-import java.lang.String;
-import java.lang.System;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //https://leetcode.com/problems/subsets/
 //
@@ -30,32 +30,30 @@ import java.util.*;
 
 public class FindAllSubset {
 
-	public static List<List<Integer>> subsetResult(int[] nums) {
+    public static void main(String[] args) {
 
-		List<List<Integer>> output = new ArrayList<>();
-		if (nums.length == 0) return output;
+        int[] nums = {1, 2, 3};
+        List<List<Integer>> output = subsetResult(nums);
+        System.out.println(output.toString());
+    }
 
-		subsethelper(0, nums, output, new ArrayList<>());
+    public static List<List<Integer>> subsetResult(int[] nums) {
+        List<List<Integer>> subset = new ArrayList();
+        if (nums.length == 0) return subset;
+        //Arrays.sort(nums); // optional
+        subsetHelper(0, subset, new ArrayList(), nums);
+        return subset;
+    }
 
-		return output;
+    public static void subsetHelper(int index, List<List<Integer>> subset, List<Integer> current_position, int[] nums) {
 
-	}
+        subset.add(new ArrayList(current_position));
+        for (int i = index; i < nums.length; i++) {
+            current_position.add(nums[i]);
+            subsetHelper(i + 1, subset, current_position, nums);
+            current_position.remove(current_position.size() - 1);
+        }
 
-	public static void subsethelper(int index, int[] nums, List<List<Integer>> output, List<Integer> current_position) {
-		output.add(new ArrayList<>(current_position));
-
-		for(int i = index; i<nums.length; i++) {
-			current_position.add(nums[i]);
-			subsethelper(i+1, nums, output, current_position);
-			current_position.remove(current_position.size()-1);
-		}
-
-	}
-
-	public static void main(String[] args) { 
-		int[] nums = {1,2,3};
-		List<List<Integer>> output = subsetResult(nums);
-		System.out.println(output.toString());
-	}
+    }
 
 }
