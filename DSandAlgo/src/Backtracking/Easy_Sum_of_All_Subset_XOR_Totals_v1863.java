@@ -58,12 +58,12 @@ public class Easy_Sum_of_All_Subset_XOR_Totals_v1863 {
     //1   1   0
 
     public int subsetXORSum(int[] nums) {
-        return solve(nums, 0 , 0);
+        return solve(nums, 0,0);
     }
 
-    private int solve(int[] nums, int i, int xor) {
-        if(i==nums.length ) return xor;
-        return solve(nums, i+1, xor^nums[i]) + solve(nums, i+1, xor);
+    private int solve(int[] nums, int i, int cur) {
+        if(i==nums.length) return cur;
+        return solve(nums, i+1, cur^nums[i]) + solve(nums, i+1, cur);
     }
 
 
