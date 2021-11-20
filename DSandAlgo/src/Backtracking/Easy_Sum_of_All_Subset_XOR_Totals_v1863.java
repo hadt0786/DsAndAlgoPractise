@@ -47,7 +47,7 @@ package Backtracking;
         1 <= nums.length <= 12
         1 <= nums[i] <= 20*/
 
-public class Sum_of_All_Subset_XOR_Totals_v1863 {
+public class Easy_Sum_of_All_Subset_XOR_Totals_v1863 {
 
     // Xor table
 
@@ -65,5 +65,7 @@ public class Sum_of_All_Subset_XOR_Totals_v1863 {
         if(i==nums.length ) return xor;
         return solve(nums, i+1, xor^nums[i]) + solve(nums, i+1, xor);
     }
+
+
 
 }
