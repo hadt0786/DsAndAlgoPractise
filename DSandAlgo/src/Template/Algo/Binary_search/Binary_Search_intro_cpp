@@ -1,0 +1,15 @@
+BINARY SEARCH
+// WORKS FOR SORTED ARRAY
+
+Best Case Time Complexity of Binary Search: O(1)
+Average Case Time Complexity of Binary Search: O(logN)
+Worst Case Time Complexity of Binary Search: O(logN)
+Space Complexity of Binary Search: O(1) for iterative, O(logN) for recursive.
+
+
+1) Contains (True or False)
+2) Index of first occurrence of a key
+3) Index of last occurrence of a key
+4) Index of least element greater than key
+5) Index of greatest element less than key
+
